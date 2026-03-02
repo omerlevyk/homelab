@@ -1,0 +1,9 @@
+cluster_name       = "homeserver-k3s"
+kubeconfig_path    = "~/.kube/config"
+kubeconfig_context = null
+
+# Keep false until ready to install ArgoCD:
+# enable_argocd_bootstrap = false
+
+# Optional pin. Null means latest chart in repo:
+# argocd_chart_version = null
