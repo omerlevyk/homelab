@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguard
+  namespace: dns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adguard
+  template:
+    metadata:
+      labels:
+        app: adguard
+    spec:
+      containers:
+        - name: adguard
+          image: adguard/adguardhome:latest
+          ports:
+            - containerPort: 53
+              protocol: TCP
+            - containerPort: 53
+              protocol: UDP
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: data
+              mountPath: /opt/adguardhome/work
+              subPath: work
+            - name: data
+              mountPath: /opt/adguardhome/conf
+              subPath: conf
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: adguard-pvc
+
