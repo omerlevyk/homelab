@@ -30,3 +30,14 @@ module "helm_argocd" {
 
   depends_on = [kubernetes_namespace_v1.core]
 }
+
+module "cloudflare_tunnel_routes" {
+  source = "./modules/cloudflare-tunnel-routes"
+  count  = var.enable_cloudflare_tunnel_routes ? 1 : 0
+
+  account_id       = var.cloudflare_account_id
+  zone_id          = var.cloudflare_zone_id
+  zone_name        = var.cloudflare_zone_name
+  tunnel_id        = var.cloudflare_tunnel_id
+  public_hostnames = var.cloudflare_public_hostnames
+}

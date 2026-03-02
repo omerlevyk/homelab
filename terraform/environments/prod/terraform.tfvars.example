@@ -1,9 +1,21 @@
 cluster_name       = "homeserver-k3s"
-kubeconfig_path    = "~/.kube/config"
-kubeconfig_context = null
+kubeconfig_path    = "~/.kube/homeserver-k3s-tunnel.yaml"
+kubeconfig_context = "default"
 
 # Keep false until ready to install ArgoCD:
 # enable_argocd_bootstrap = false
 
 # Optional pin. Null means latest chart in repo:
 # argocd_chart_version = null
+
+# Keep false until Cloudflare IDs + hostnames are set:
+# enable_cloudflare_tunnel_routes = false
+#
+# cloudflare_account_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# cloudflare_zone_id    = "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+# cloudflare_zone_name  = "example.com"
+# cloudflare_tunnel_id  = "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz"
+#
+# cloudflare_public_hostnames = {
+#   whoami = { service = "http://whoami.infra.svc.cluster.local:80" }
+# }
