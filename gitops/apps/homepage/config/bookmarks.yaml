@@ -1,0 +1,10 @@
+- Documentation:
+    - K3s Docs:
+        - abbr: K3S
+          href: https://docs.k3s.io/
+    - ArgoCD Docs:
+        - abbr: ACD
+          href: https://argo-cd.readthedocs.io/
+    - HomePage Docs:
+        - abbr: HP
+          href: https://gethomepage.dev/

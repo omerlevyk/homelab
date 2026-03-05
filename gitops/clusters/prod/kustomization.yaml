@@ -4,5 +4,6 @@ resources:
   - ../../infra/dns/adguard
   - ../../infra/cloudflared
   - ../../infra/argocd
+  - ../../infra/traefik-dashboard
   - ../../apps/jellyfin
   - ../../apps/homepage

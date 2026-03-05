@@ -1,0 +1,17 @@
+- Shortcuts:
+    - Router:
+        href: http://192.168.1.1
+        description: LAN gateway
+        icon: router.png
+    - Tailscale:
+        href: https://login.tailscale.com/admin/machines
+        description: Tailnet admin
+        icon: tailscale.png
+    - AdGuard:
+        href: https://adguard.omerlevy03.com
+        description: DNS and filtering
+        icon: adguard-home.png
+    - Traefik:
+        href: https://traefik.omerlevy03.com
+        description: Ingress dashboard
+        icon: traefik.png

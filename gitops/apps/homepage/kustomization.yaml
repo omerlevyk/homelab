@@ -3,7 +3,16 @@ kind: Kustomization
 namespace: apps
 resources:
   - rbac.yaml
-  - configmap.yaml
   - deploy.yaml
   - svc.yaml
   - ingress.yaml
+
+configMapGenerator:
+  - name: homepage-config
+    files:
+      - config/kubernetes.yaml
+      - config/settings.yaml
+      - config/services.yaml
+      - config/bookmarks.yaml
+      - config/widgets.yaml
+      - config/custom.css

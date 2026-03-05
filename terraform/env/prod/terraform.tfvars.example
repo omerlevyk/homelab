@@ -18,6 +18,7 @@ kubeconfig_context = "default"
 #
 # cloudflare_public_hostnames = {
 #   argocd   = { service = "http://traefik.kube-system.svc.cluster.local:80" }
+#   traefik  = { service = "http://traefik.kube-system.svc.cluster.local:80" }
 #   homepage = { service = "http://traefik.kube-system.svc.cluster.local:80" }
 #   jellyfin = { service = "http://traefik.kube-system.svc.cluster.local:80" }
 # }

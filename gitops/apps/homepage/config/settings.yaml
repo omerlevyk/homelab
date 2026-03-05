@@ -1,0 +1,21 @@
+title: Omer HomeLab
+description: Infrastructure, media, and operations
+theme: dark
+color: slate
+headerStyle: clean
+hideVersion: true
+statusStyle: "dot"
+useEqualHeights: true
+quicklaunch:
+  searchDescriptions: true
+  hideInternetSearch: false
+layout:
+  Platform:
+    style: column
+    columns: 2
+  Media:
+    style: column
+    columns: 2
+  Shortcuts:
+    style: row
+    columns: 4

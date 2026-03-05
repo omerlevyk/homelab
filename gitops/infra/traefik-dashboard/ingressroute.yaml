@@ -1,0 +1,21 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-dashboard
+  namespace: kube-system
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Platform
+    gethomepage.dev/name: Traefik
+    gethomepage.dev/icon: traefik.png
+    gethomepage.dev/description: Ingress dashboard
+    gethomepage.dev/href: "https://traefik.omerlevy03.com"
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`traefik.omerlevy03.com`)
+      kind: Rule
+      services:
+        - kind: TraefikService
+          name: api@internal
