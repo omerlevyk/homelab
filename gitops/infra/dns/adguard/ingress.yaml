@@ -9,11 +9,21 @@ metadata:
     gethomepage.dev/name: AdGuard
     gethomepage.dev/icon: adguard-home.png
     gethomepage.dev/description: DNS and filtering
-    gethomepage.dev/href: "https://adguard.omerlevy03.com"
+    gethomepage.dev/href: "http://adguard.home.arpa"
 spec:
   ingressClassName: traefik
   rules:
     - host: adguard.omerlevy03.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: adguard
+                port:
+                  number: 80
+    - host: adguard.home.arpa
       http:
         paths:
           - path: /

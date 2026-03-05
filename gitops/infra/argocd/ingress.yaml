@@ -22,3 +22,13 @@ spec:
                 name: argocd-server
                 port:
                   number: 80
+    - host: argocd.home.arpa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80

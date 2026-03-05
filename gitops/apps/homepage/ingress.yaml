@@ -10,11 +10,21 @@ metadata:
     gethomepage.dev/icon: homepage.png
     gethomepage.dev/description: Homelab dashboard
     gethomepage.dev/pod-selector: "app=homepage"
-    gethomepage.dev/href: "https://homepage.omerlevy03.com"
+    gethomepage.dev/href: "http://homepage.home.arpa"
 spec:
   ingressClassName: traefik
   rules:
     - host: homepage.omerlevy03.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: homepage
+                port:
+                  number: 3000
+    - host: homepage.home.arpa
       http:
         paths:
           - path: /

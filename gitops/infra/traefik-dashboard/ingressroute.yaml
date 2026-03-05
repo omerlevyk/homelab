@@ -9,12 +9,12 @@ metadata:
     gethomepage.dev/name: Traefik
     gethomepage.dev/icon: traefik.png
     gethomepage.dev/description: Ingress dashboard
-    gethomepage.dev/href: "https://traefik.omerlevy03.com"
+    gethomepage.dev/href: "http://traefik.home.arpa/dashboard/"
 spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`traefik.omerlevy03.com`)
+    - match: Host(`traefik.omerlevy03.com`) || Host(`traefik.home.arpa`)
       kind: Rule
       services:
         - kind: TraefikService
