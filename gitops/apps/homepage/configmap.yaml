@@ -36,7 +36,7 @@ data:
             description: LAN gateway
             icon: router.png
         - AdGuard:
-            href: http://192.168.1.234:3000
+            href: https://adguard.omerlevy03.com
             description: DNS and filtering
             icon: adguard-home.png
   bookmarks.yaml: |

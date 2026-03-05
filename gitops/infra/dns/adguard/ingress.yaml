@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: adguard
+  namespace: dns
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Platform
+    gethomepage.dev/name: AdGuard
+    gethomepage.dev/icon: adguard-home.png
+    gethomepage.dev/description: DNS and filtering
+    gethomepage.dev/href: "https://adguard.omerlevy03.com"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: adguard.omerlevy03.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: adguard
+                port:
+                  number: 80
