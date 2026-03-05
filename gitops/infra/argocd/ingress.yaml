@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd-server
-  namespace: argocd
+  namespace: infra
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Platform

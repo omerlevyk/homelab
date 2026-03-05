@@ -18,6 +18,7 @@ override.tf.json
 # Terraform variable files that may contain secrets
 *.tfvars
 *.tfvars.json
+*.env
 
 # Keep dependency lock file committed for reproducibility
 !**/.terraform.lock.hcl
