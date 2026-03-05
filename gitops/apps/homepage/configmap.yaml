@@ -8,21 +8,98 @@ data:
     mode: cluster
     ingress: true
   settings.yaml: |
-    title: HomeLab
+    title: Omer HomeLab
+    description: Infrastructure, media, and operations
+    theme: dark
+    color: slate
     headerStyle: clean
+    hideVersion: true
+    statusStyle: "dot"
+    useEqualHeights: true
+    quicklaunch:
+      searchDescriptions: true
+      hideInternetSearch: false
     layout:
-      Media:
-        style: row
-        columns: 4
       Platform:
+        style: column
+        columns: 2
+      Media:
+        style: column
+        columns: 2
+      Shortcuts:
         style: row
         columns: 4
   services.yaml: |
-    - Media: []
-    - Platform: []
+    - Platform:
+        - ArgoCD:
+            href: https://argocd.omerlevy03.com
+            description: GitOps control plane
+            icon: argo-cd.png
+            siteMonitor: https://argocd.omerlevy03.com
+        - HomePage:
+            href: https://homepage.omerlevy03.com
+            description: Homelab dashboard
+            icon: homepage.png
+            siteMonitor: https://homepage.omerlevy03.com
+    - Media:
+        - Jellyfin:
+            href: https://jellyfin.omerlevy03.com
+            description: Streaming server
+            icon: jellyfin.png
+            siteMonitor: https://jellyfin.omerlevy03.com
+    - Shortcuts:
+        - Router:
+            href: http://192.168.1.1
+            description: LAN gateway
+            icon: router.png
+        - AdGuard:
+            href: http://192.168.1.234
+            description: DNS and filtering
+            icon: adguard-home.png
+  bookmarks.yaml: |
+    - Documentation:
+        - K3s Docs:
+            - href: https://docs.k3s.io/
+        - ArgoCD Docs:
+            - href: https://argo-cd.readthedocs.io/
+        - HomePage Docs:
+            - href: https://gethomepage.dev/
   widgets.yaml: |
     - kubernetes:
         cluster:
           show: true
         nodes:
           show: true
+  custom.css: |
+    :root {
+      --color-50: 247, 248, 250;
+      --color-100: 237, 240, 244;
+      --color-200: 219, 224, 232;
+      --color-300: 186, 195, 210;
+      --color-400: 140, 154, 176;
+      --color-500: 100, 116, 139;
+      --color-600: 71, 85, 105;
+      --color-700: 51, 65, 85;
+      --color-800: 30, 41, 59;
+      --color-900: 15, 23, 42;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(71, 85, 105, 0.32), transparent 45%),
+        radial-gradient(circle at 85% 0%, rgba(30, 41, 59, 0.45), transparent 35%),
+        linear-gradient(145deg, #0b1220 0%, #121b2c 45%, #0f172a 100%);
+    }
+
+    .service-card {
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: 0 12px 28px rgba(2, 6, 23, 0.28);
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .service-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(148, 163, 184, 0.35);
+      transition: all 180ms ease;
+    }
