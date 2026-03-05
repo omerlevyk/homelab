@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-config
+  namespace: apps
+data:
+  kubernetes.yaml: |
+    mode: cluster
+    ingress: true
+  settings.yaml: |
+    title: HomeLab
+    headerStyle: clean
+    layout:
+      Media:
+        style: row
+        columns: 4
+      Platform:
+        style: row
+        columns: 4
+  services.yaml: |
+    - Media: []
+    - Platform: []
+  widgets.yaml: |
+    - kubernetes:
+        cluster:
+          show: true
+        nodes:
+          show: true

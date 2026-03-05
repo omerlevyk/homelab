@@ -17,5 +17,7 @@ kubeconfig_context = "default"
 # cloudflare_tunnel_id  = "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz"
 #
 # cloudflare_public_hostnames = {
-#   whoami = { service = "http://whoami.infra.svc.cluster.local:80" }
+#   argocd   = { service = "http://traefik.kube-system.svc.cluster.local:80" }
+#   homepage = { service = "http://traefik.kube-system.svc.cluster.local:80" }
+#   jellyfin = { service = "http://traefik.kube-system.svc.cluster.local:80" }
 # }

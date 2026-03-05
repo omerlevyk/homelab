@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyfin
+  namespace: apps
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Media
+    gethomepage.dev/name: Jellyfin
+    gethomepage.dev/icon: jellyfin.png
+    gethomepage.dev/description: Media streaming
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: jellyfin.omerlevy03.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jellyfin
+                port:
+                  number: 8096

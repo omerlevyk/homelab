@@ -3,4 +3,6 @@ kind: Kustomization
 resources:
   - ../../infra/dns/adguard
   - ../../infra/cloudflared
-
+  - ../../infra/argocd
+  - ../../apps/jellyfin
+  - ../../apps/homepage

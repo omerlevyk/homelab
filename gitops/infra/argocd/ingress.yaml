@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server
+  namespace: argocd
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Platform
+    gethomepage.dev/name: ArgoCD
+    gethomepage.dev/icon: argo-cd.png
+    gethomepage.dev/description: GitOps control plane
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: argocd.omerlevy03.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
