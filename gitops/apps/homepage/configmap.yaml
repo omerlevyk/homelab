@@ -30,30 +30,13 @@ data:
         style: row
         columns: 4
   services.yaml: |
-    - Platform:
-        - ArgoCD:
-            href: https://argocd.omerlevy03.com
-            description: GitOps control plane
-            icon: argo-cd.png
-            siteMonitor: https://argocd.omerlevy03.com
-        - HomePage:
-            href: https://homepage.omerlevy03.com
-            description: Homelab dashboard
-            icon: homepage.png
-            siteMonitor: https://homepage.omerlevy03.com
-    - Media:
-        - Jellyfin:
-            href: https://jellyfin.omerlevy03.com
-            description: Streaming server
-            icon: jellyfin.png
-            siteMonitor: https://jellyfin.omerlevy03.com
     - Shortcuts:
         - Router:
             href: http://192.168.1.1
             description: LAN gateway
             icon: router.png
         - AdGuard:
-            href: http://192.168.1.234
+            href: http://192.168.1.234:3000
             description: DNS and filtering
             icon: adguard-home.png
   bookmarks.yaml: |
