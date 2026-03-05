@@ -9,6 +9,8 @@ metadata:
     gethomepage.dev/name: Jellyfin
     gethomepage.dev/icon: jellyfin.png
     gethomepage.dev/description: Media streaming
+    gethomepage.dev/pod-selector: "app=jellyfin"
+    gethomepage.dev/href: "https://jellyfin.omerlevy03.com"
 spec:
   ingressClassName: traefik
   rules:

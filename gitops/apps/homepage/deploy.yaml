@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: homepage
+        app.kubernetes.io/name: homepage
     spec:
       serviceAccountName: homepage
       containers:

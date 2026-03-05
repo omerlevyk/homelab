@@ -9,6 +9,8 @@ metadata:
     gethomepage.dev/name: HomePage
     gethomepage.dev/icon: homepage.png
     gethomepage.dev/description: Homelab dashboard
+    gethomepage.dev/pod-selector: "app=homepage"
+    gethomepage.dev/href: "https://homepage.omerlevy03.com"
 spec:
   ingressClassName: traefik
   rules:
