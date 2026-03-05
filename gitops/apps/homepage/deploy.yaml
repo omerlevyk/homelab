@@ -26,8 +26,28 @@ spec:
               value: "homepage.omerlevy03.com"
           volumeMounts:
             - name: homepage-config
-              mountPath: /app/config
+              mountPath: /app/config/kubernetes.yaml
+              subPath: kubernetes.yaml
+            - name: homepage-config
+              mountPath: /app/config/settings.yaml
+              subPath: settings.yaml
+            - name: homepage-config
+              mountPath: /app/config/services.yaml
+              subPath: services.yaml
+            - name: homepage-config
+              mountPath: /app/config/bookmarks.yaml
+              subPath: bookmarks.yaml
+            - name: homepage-config
+              mountPath: /app/config/widgets.yaml
+              subPath: widgets.yaml
+            - name: homepage-config
+              mountPath: /app/config/custom.css
+              subPath: custom.css
+            - name: homepage-logs
+              mountPath: /app/config/logs
       volumes:
         - name: homepage-config
           configMap:
             name: homepage-config
+        - name: homepage-logs
+          emptyDir: {}
