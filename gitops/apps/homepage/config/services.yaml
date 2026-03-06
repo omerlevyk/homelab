@@ -7,4 +7,8 @@
         href: https://login.tailscale.com/admin/machines
         description: Tailnet admin
         icon: tailscale.png
+    - Traefik:
+        href: http://traefik.home.arpa/dashboard/
+        description: Ingress dashboard (LAN/Tailscale)
+        icon: traefik.png
 - Storage: []

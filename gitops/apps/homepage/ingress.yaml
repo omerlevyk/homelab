@@ -3,14 +3,6 @@ kind: Ingress
 metadata:
   name: homepage
   namespace: apps
-  annotations:
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Infrastructure
-    gethomepage.dev/name: HomePage
-    gethomepage.dev/icon: homepage.png
-    gethomepage.dev/description: Homelab dashboard
-    gethomepage.dev/pod-selector: "app=homepage"
-    gethomepage.dev/href: "http://homepage.home.arpa"
 spec:
   ingressClassName: traefik
   rules:
