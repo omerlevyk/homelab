@@ -3,13 +3,6 @@ kind: Ingress
 metadata:
   name: adguard
   namespace: dns
-  annotations:
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Networking
-    gethomepage.dev/name: AdGuard
-    gethomepage.dev/icon: adguard-home.png
-    gethomepage.dev/description: DNS and filtering
-    gethomepage.dev/href: "http://adguard.home.arpa"
 spec:
   ingressClassName: traefik
   rules:
