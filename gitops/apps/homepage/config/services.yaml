@@ -1,14 +1,17 @@
-- Networking:
-    - Router:
-        href: http://192.168.1.1
-        description: LAN gateway
-        icon: router.png
-    - Tailscale:
-        href: https://login.tailscale.com/admin/machines
-        description: Tailnet admin
-        icon: tailscale.png
-    - Traefik:
-        href: http://traefik.home.arpa/dashboard/
-        description: Ingress dashboard (LAN/Tailscale)
-        icon: traefik.png
+- Networking & Security:
+  - Traefik:
+    href: http://traefik.home.arpa/dashboard/
+    description: Ingress dashboard (LAN/Tailscale)
+    icon: traefik.png
+
+  - Router:
+    href: http://192.168.1.1
+    description: LAN gateway
+    icon: router.png
+    
+  - Tailscale:
+    href: https://login.tailscale.com/admin/machines
+    description: Tailnet admin
+    icon: tailscale.png
+    
 - Storage: []
