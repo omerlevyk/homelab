@@ -20,7 +20,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: adguard
+                name: adguard-web
                 port:
                   number: 80
     - host: adguard.home.arpa
@@ -30,6 +30,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: adguard
+                name: adguard-web
                 port:
                   number: 80
