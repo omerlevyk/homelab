@@ -10,12 +10,15 @@ quicklaunch:
   searchDescriptions: true
   hideInternetSearch: false
 layout:
-  Platform:
+  Infrastructure:
     style: column
     columns: 2
-  Media:
+  Networking:
     style: column
     columns: 2
-  Shortcuts:
-    style: row
-    columns: 4
+  Applications:
+    style: column
+    columns: 2
+  Storage:
+    style: column
+    columns: 2

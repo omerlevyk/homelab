@@ -5,7 +5,7 @@ metadata:
   namespace: apps
   annotations:
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Media
+    gethomepage.dev/group: Applications
     gethomepage.dev/name: Jellyfin
     gethomepage.dev/icon: jellyfin.png
     gethomepage.dev/description: Media streaming

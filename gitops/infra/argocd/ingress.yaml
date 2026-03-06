@@ -5,10 +5,11 @@ metadata:
   namespace: infra
   annotations:
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Platform
+    gethomepage.dev/group: Infrastructure
     gethomepage.dev/name: ArgoCD
     gethomepage.dev/icon: argo-cd.png
     gethomepage.dev/description: GitOps control plane
+    gethomepage.dev/href: "http://argocd.home.arpa"
 spec:
   ingressClassName: traefik
   rules:

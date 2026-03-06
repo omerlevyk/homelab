@@ -5,7 +5,7 @@ metadata:
   namespace: apps
   annotations:
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Platform
+    gethomepage.dev/group: Infrastructure
     gethomepage.dev/name: HomePage
     gethomepage.dev/icon: homepage.png
     gethomepage.dev/description: Homelab dashboard

@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
   annotations:
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Platform
+    gethomepage.dev/group: Networking
     gethomepage.dev/name: Traefik
     gethomepage.dev/icon: traefik.png
     gethomepage.dev/description: Ingress dashboard

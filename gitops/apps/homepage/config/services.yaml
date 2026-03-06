@@ -1,4 +1,4 @@
-- Shortcuts:
+- Networking:
     - Router:
         href: http://192.168.1.1
         description: LAN gateway
@@ -7,11 +7,4 @@
         href: https://login.tailscale.com/admin/machines
         description: Tailnet admin
         icon: tailscale.png
-    - AdGuard:
-        href: http://adguard.home.arpa
-        description: DNS and filtering (LAN/Tailscale)
-        icon: adguard-home.png
-    - Traefik:
-        href: http://traefik.home.arpa/dashboard/
-        description: Ingress dashboard (LAN/Tailscale)
-        icon: traefik.png
+- Storage: []

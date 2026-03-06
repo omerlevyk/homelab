@@ -5,7 +5,7 @@ metadata:
   namespace: dns
   annotations:
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Platform
+    gethomepage.dev/group: Networking
     gethomepage.dev/name: AdGuard
     gethomepage.dev/icon: adguard-home.png
     gethomepage.dev/description: DNS and filtering
