@@ -1,4 +1,8 @@
 - Networking & Security:
+    - AdGuard:
+        href: http://adguard.home.arpa
+        description: DNS and filtering (LAN/Tailscale)
+        icon: adguard-home.png
     - Traefik:
         href: http://traefik.home.arpa/dashboard/
         description: Ingress dashboard (LAN/Tailscale)
