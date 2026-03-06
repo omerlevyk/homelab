@@ -1,4 +1,14 @@
+- Infrastructure:
+    - GitHub:
+        href: https://github.com/
+        description: Source control
+        icon: github.png
+
 - Networking & Security:
+    - Cloudflare:
+        href: https://dash.cloudflare.com
+        description: DNS, tunnels, and edge
+        icon: cloudflare.png
     - AdGuard:
         href: http://adguard.home.arpa
         description: DNS and filtering (LAN/Tailscale)
