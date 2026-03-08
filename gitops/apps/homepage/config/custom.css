@@ -52,15 +52,6 @@ body {
   margin: 0 auto;
 }
 
-/* Force Shortcuts internals to horizontal, wrapping icon tiles. */
-.services-group:nth-of-type(1) ul,
-.services-group:nth-of-type(1) .services,
-.services-group:nth-of-type(1) .service-list,
-.services-group:nth-of-type(1) .service-grid {
-  display: flex;
-}
-
-
 .services-group:nth-of-type(1) li,
 .services-group:nth-of-type(1) .service {
   width: auto;
