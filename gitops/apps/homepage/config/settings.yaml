@@ -11,8 +11,8 @@ quicklaunch:
   hideInternetSearch: false
 layout:
   Shortcuts:
-    style: row
-    columns: 12
+    style: grid
+    columns: 9
   Infrastructure:
     style: column
     columns: 3
