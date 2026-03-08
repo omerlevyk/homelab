@@ -4,6 +4,8 @@ metadata:
   name: jellyfin-media-pvc
   namespace: apps
 spec:
+  storageClassName: local-media
+  volumeName: jellyfin-media-pv
   accessModes:
     - ReadWriteOnce
   resources:
