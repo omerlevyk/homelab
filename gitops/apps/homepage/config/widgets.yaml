@@ -1,5 +1,1 @@
-- kubernetes:
-    cluster:
-      show: true
-    nodes:
-      show: true
+[]
