@@ -1,6 +1,11 @@
 title: HomeLab
 description: Infrastructure, media, and operations
-background: https://wallpapercave.com/uwp/uwp4990876.jpeg
+background:
+  image: https://wallpapercave.com/uwp/uwp4990876.jpeg
+  blur: sm
+  saturate: 50
+  brightness: 50
+  opacity: 50
 theme: dark
 color: slate
 headerStyle: clean
