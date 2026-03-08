@@ -52,6 +52,12 @@ body {
   margin: 0 auto;
 }
 
+/* Make shortcuts display as a grid */
+.services-group:nth-of-type(1) .service-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 0.6rem;
+}
 .services-group:nth-of-type(1) li,
 .services-group:nth-of-type(1) .service {
   width: auto;
