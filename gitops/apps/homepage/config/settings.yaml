@@ -7,7 +7,7 @@ background:
   opacity: 80
 theme: dark
 color: slate
-cardBlur: xl
+cardBlur: md
 headerStyle: clean
 hideVersion: true
 statusStyle: "dot"
