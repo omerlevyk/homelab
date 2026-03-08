@@ -4,11 +4,7 @@
         description: Source control
         icon: github.png
 
-- Networking & Security:
-    - Cloudflare:
-        href: https://dash.cloudflare.com
-        description: DNS, tunnels, and edge
-        icon: cloudflare.png
+- Networking:
     - AdGuard:
         href: http://adguard.home.arpa
         description: DNS and filtering (LAN/Tailscale)
@@ -17,15 +13,19 @@
         href: http://traefik.home.arpa/dashboard/
         description: Ingress dashboard (LAN/Tailscale)
         icon: traefik.png
-
     - Router:
         href: http://192.168.1.1
         description: LAN gateway
         icon: router.png
-    
+
+- Security:
     - Tailscale:
         href: https://login.tailscale.com/admin/machines
         description: Tailnet admin
         icon: tailscale.png
-    
+    - Cloudflare:
+        href: https://dash.cloudflare.com
+        description: DNS, tunnels, and edge
+        icon: cloudflare.png
+
 - Storage: []

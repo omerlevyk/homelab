@@ -12,13 +12,16 @@ quicklaunch:
 layout:
   Infrastructure:
     style: column
-    columns: 2
-  Networking:
-    style: column
-    columns: 2
+    columns: 3
   Applications:
     style: column
-    columns: 2
+    columns: 3
+  Networking:
+    style: column
+    columns: 3
+  Security:
+    style: column
+    columns: 3
   Storage:
     style: column
-    columns: 2
+    columns: 3
