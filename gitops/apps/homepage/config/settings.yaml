@@ -10,6 +10,9 @@ quicklaunch:
   searchDescriptions: true
   hideInternetSearch: false
 layout:
+  Shortcuts:
+    style: row
+    columns: 12
   Infrastructure:
     style: column
     columns: 3

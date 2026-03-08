@@ -23,10 +23,22 @@ body {
   box-shadow: 0 12px 28px rgba(2, 6, 23, 0.28);
   border-radius: 14px;
   backdrop-filter: blur(8px);
+  padding: 0.45rem 0.55rem;
+  min-height: 54px;
 }
 
 .service-card:hover {
   transform: translateY(-2px);
   border-color: rgba(148, 163, 184, 0.35);
   transition: all 180ms ease;
+}
+
+.service-card p {
+  display: none;
+}
+
+.service-card h3,
+.service-card .service-name,
+.service-card .service-title {
+  display: none;
 }
