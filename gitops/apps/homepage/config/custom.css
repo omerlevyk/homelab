@@ -44,8 +44,28 @@ body {
 .services-group:nth-of-type(1) .service-card {
   min-height: 44px;
   padding: 0.3rem;
+  width: auto;
+  max-width: none;
 }
 
 .services-group:nth-of-type(1) .service-icon {
   margin: 0 auto;
+}
+
+/* Force Shortcuts internals to horizontal, wrapping icon tiles. */
+.services-group:nth-of-type(1) ul,
+.services-group:nth-of-type(1) .services,
+.services-group:nth-of-type(1) .service-list,
+.services-group:nth-of-type(1) .service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: flex-start;
+}
+
+.services-group:nth-of-type(1) li,
+.services-group:nth-of-type(1) .service {
+  width: auto;
+  max-width: none;
+  flex: 0 0 auto;
 }
