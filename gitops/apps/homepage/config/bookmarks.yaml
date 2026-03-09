@@ -1,3 +1,32 @@
+- Shortcuts:
+    - Gmail:
+        - icon: gmail.png
+          href: https://mail.google.com/mail/u/0/
+    - Maps:
+        - icon: google-maps.png
+          href: https://www.google.com/maps?authuser=0
+    - Drive:
+        - icon: google-drive.png
+          href: https://drive.google.com/drive/my-drive
+    - Calendar:
+        - icon: google-calendar.png
+          href: https://calendar.google.com/calendar/u/0/r?tab=cc
+    - Translate:
+        - icon: google-translate.png
+          href: https://translate.google.co.il/?hl=en&tab=wT&sl=iw&tl=en&op=translate
+    - YouTube:
+        - icon: youtube.png
+          href: https://www.youtube.com/
+    - Werxpace:
+        - icon: sh-linkding.png
+          href: https://web.werxpace.click/
+    - WhatsApp:
+        - icon: whatsapp.png
+          href: https://web.whatsapp.com/
+    - ChatGPT:
+        - icon: chatgpt.png
+          href: https://chatgpt.com/
+
 - Documentation:
     - K3s Docs:
         - abbr: K3S
