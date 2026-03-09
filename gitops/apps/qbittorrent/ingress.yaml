@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbittorrent
+  namespace: apps
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Media
+    gethomepage.dev/name: qBittorrent
+    gethomepage.dev/icon: qbittorrent.png
+    gethomepage.dev/description: Downloader
+    gethomepage.dev/href: "http://qbittorrent.home.arpa"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: qbittorrent.home.arpa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: qbittorrent
+                port:
+                  number: 8080

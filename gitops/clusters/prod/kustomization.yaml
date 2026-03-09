@@ -6,5 +6,11 @@ resources:
   - ../../infra/argocd
   - ../../infra/traefik-dashboard
   - ../../apps/jellyfin
+  - ../../apps/qbittorrent
+  - ../../apps/prowlarr
+  - ../../apps/sonarr
+  - ../../apps/radarr
+  - ../../apps/lidarr
+  - ../../apps/bazarr
   - ../../apps/homepage
   - ../../apps/homarr
