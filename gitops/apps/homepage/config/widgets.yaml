@@ -1,7 +1,22 @@
-- resources:
-    cpu: true
-    memory: true
-    disk: /
+- openmeteo:
+    label: Home
+    latitude: 32.0853
+    longitude: 34.7818
+    timezone: Asia/Jerusalem
+    units: metric
+    cache: 10
+
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short
+      dateStyle: short
+
+- search:
+    provider: [google, duckduckgo, brave]
+    focus: true
+    showSearchSuggestions: true
+    target: _self
 
 - kubernetes:
     cluster:
@@ -16,22 +31,8 @@
       memory: true
       showLabel: true
 
-- openmeteo:
-    label: Home
-    latitude: 32.0853
-    longitude: 34.7818
-    timezone: Asia/Jerusalem
-    units: metric
-    cache: 10
+- resources:
+    cpu: true
+    memory: true
+    disk: /
 
-- search:
-    provider: [google, duckduckgo, brave]
-    focus: true
-    showSearchSuggestions: true
-    target: _self
-
-- datetime:
-    text_size: xl
-    format:
-      timeStyle: short
-      dateStyle: short
