@@ -3,9 +3,32 @@
     memory: true
     disk: /
 
+- kubernetes:
+    cluster:
+      show: true
+      cpu: true
+      memory: true
+      showLabel: true
+      label: k3s
+    nodes:
+      show: true
+      cpu: true
+      memory: true
+      showLabel: true
+
+- openmeteo:
+    label: Home
+    latitude: 32.0853
+    longitude: 34.7818
+    timezone: Asia/Jerusalem
+    units: metric
+    cache: 10
+
 - search:
-    provider: google
-    target: _blank
+    provider: [google, duckduckgo, brave]
+    focus: true
+    showSearchSuggestions: true
+    target: _self
 
 - datetime:
     text_size: xl
