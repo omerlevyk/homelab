@@ -22,3 +22,6 @@ override.tf.json
 
 # Keep dependency lock file committed for reproducibility
 !**/.terraform.lock.hcl
+
+# Local kubeconfig symlinks/files
+homeserver-k3s*.yaml
