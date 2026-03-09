@@ -13,8 +13,7 @@ quicklaunch:
 layout:
   Shortcuts:
     style: row
-    columns: 12
-    iconOnly: true
+    columns: 6
   Infrastructure:
     style: column
     columns: 3
