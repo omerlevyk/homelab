@@ -14,12 +14,27 @@ spec:
         app: overseerr
         app.kubernetes.io/name: overseerr
     spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+        - name: init-permissions
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - chown -R 1000:1000 /app/config
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
       containers:
         - name: overseerr
           image: ghcr.io/seerr-team/seerr:latest
           ports:
             - containerPort: 5055
               protocol: TCP
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
           env:
             - name: TZ
               value: Asia/Jerusalem
