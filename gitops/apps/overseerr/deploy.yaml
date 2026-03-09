@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: overseerr
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: overseerr
+  template:
+    metadata:
+      labels:
+        app: overseerr
+        app.kubernetes.io/name: overseerr
+    spec:
+      containers:
+        - name: overseerr
+          image: ghcr.io/seerr-team/seerr:latest
+          ports:
+            - containerPort: 5055
+              protocol: TCP
+          env:
+            - name: TZ
+              value: Asia/Jerusalem
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: overseerr-config-pvc

@@ -12,5 +12,6 @@ resources:
   - ../../apps/radarr
   - ../../apps/lidarr
   - ../../apps/bazarr
+  - ../../apps/overseerr
   - ../../apps/homepage
   - ../../apps/homarr
