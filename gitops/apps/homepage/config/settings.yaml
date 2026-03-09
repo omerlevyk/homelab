@@ -19,7 +19,6 @@ layout:
   Shortcuts:
     style: row
     columns: 9
-    iconsOnly: true
   Infrastructure:
     style: column
     columns: 3
