@@ -5,7 +5,7 @@ metadata:
   namespace: apps
   annotations:
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Media
+    gethomepage.dev/group: Applications
     gethomepage.dev/name: Overseerr
     gethomepage.dev/icon: overseerr.png
     gethomepage.dev/description: Request manager
