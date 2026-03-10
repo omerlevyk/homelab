@@ -14,4 +14,3 @@ resources:
   - ../../apps/bazarr
   - ../../apps/overseerr
   - ../../apps/homepage
-  - ../../apps/homarr
