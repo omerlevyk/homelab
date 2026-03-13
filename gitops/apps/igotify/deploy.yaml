@@ -25,6 +25,21 @@ spec:
               value: "true"
             - name: ENABLE_SCALAR_UI
               value: "true"
+            - name: GOTIFY_URLS
+              valueFrom:
+                secretKeyRef:
+                  name: igotify-local-instance
+                  key: gotify_urls
+            - name: GOTIFY_CLIENT_TOKENS
+              valueFrom:
+                secretKeyRef:
+                  name: igotify-local-instance
+                  key: gotify_client_tokens
+            - name: SECNTFY_TOKENS
+              valueFrom:
+                secretKeyRef:
+                  name: igotify-local-instance
+                  key: secntfy_tokens
           resources:
             requests:
               cpu: 50m
