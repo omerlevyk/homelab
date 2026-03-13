@@ -22,9 +22,9 @@ spec:
               protocol: TCP
           env:
             - name: ENABLE_CONSOLE_LOG
-              value: "'true'"
+              value: "true"
             - name: ENABLE_SCALAR_UI
-              value: "'true'"
+              value: "true"
           resources:
             requests:
               cpu: 50m

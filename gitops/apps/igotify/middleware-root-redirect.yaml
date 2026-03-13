@@ -1,0 +1,10 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: igotify-root-redirect
+  namespace: apps
+spec:
+  redirectRegex:
+    regex: ^https?://igotify\.home\.arpa/?$
+    replacement: http://igotify.home.arpa/Version
+    permanent: false

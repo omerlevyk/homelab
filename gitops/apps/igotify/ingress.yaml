@@ -4,6 +4,7 @@ metadata:
   name: igotify
   namespace: apps
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: apps-igotify-root-redirect@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Monitoring
     gethomepage.dev/name: iGotify

@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: apps
 resources:
   - pvc-data.yaml
+  - middleware-root-redirect.yaml
   - deploy.yaml
   - svc.yaml
   - ingress.yaml
