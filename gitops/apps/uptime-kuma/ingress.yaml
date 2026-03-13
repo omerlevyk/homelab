@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: uptime-kuma
+  namespace: apps
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Monitoring
+    gethomepage.dev/name: Uptime Kuma
+    gethomepage.dev/icon: uptime-kuma.png
+    gethomepage.dev/description: Endpoint monitoring
+    gethomepage.dev/href: "http://uptime-kuma.home.arpa"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: uptime-kuma.home.arpa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: uptime-kuma
+                port:
+                  number: 3001

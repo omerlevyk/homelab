@@ -15,4 +15,5 @@ resources:
   - ../../apps/overseerr
   - ../../apps/gotify
   - ../../apps/igotify
+  - ../../apps/uptime-kuma
   - ../../apps/homepage
