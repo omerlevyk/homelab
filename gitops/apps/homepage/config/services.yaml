@@ -29,14 +29,4 @@
         icon: cloudflare.png
 
 - Applications: []
-- Monitoring:
-    - Gotify:
-        href: http://gotify.home.arpa
-        description: Push notifications (LAN/Tailscale)
-        icon: mdi-bell
-    - iGotify:
-        href: http://igotify.home.arpa
-        description: iOS push bridge (LAN/Tailscale)
-        icon: mdi-bell-ring
-
 - Storage: []

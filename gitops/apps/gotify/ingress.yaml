@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Monitoring
     gethomepage.dev/name: Gotify
-    gethomepage.dev/icon: mdi-bell
+    gethomepage.dev/icon: gotify.png
     gethomepage.dev/description: Push notifications
     gethomepage.dev/href: "http://gotify.home.arpa"
 spec:
