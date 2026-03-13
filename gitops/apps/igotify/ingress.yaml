@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: igotify
+  namespace: apps
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Monitoring
+    gethomepage.dev/name: iGotify
+    gethomepage.dev/icon: mdi-bell-ring
+    gethomepage.dev/description: iOS push bridge for Gotify
+    gethomepage.dev/href: "http://igotify.home.arpa"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: igotify.home.arpa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: igotify
+                port:
+                  number: 8080

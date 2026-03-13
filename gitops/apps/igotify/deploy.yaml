@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: igotify
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: igotify
+  template:
+    metadata:
+      labels:
+        app: igotify
+        app.kubernetes.io/name: igotify
+    spec:
+      containers:
+        - name: igotify
+          image: ghcr.io/androidseb25/igotify-notification-assist:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: ENABLE_CONSOLE_LOG
+              value: "'true'"
+            - name: ENABLE_SCALAR_UI
+              value: "'true'"
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 300m
+              memory: 256Mi
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+          readinessProbe:
+            httpGet:
+              path: /Version
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /Version
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 20
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: igotify-data-pvc
