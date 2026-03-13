@@ -13,4 +13,5 @@ resources:
   - ../../apps/lidarr
   - ../../apps/bazarr
   - ../../apps/overseerr
+  - ../../apps/gotify
   - ../../apps/homepage

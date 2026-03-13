@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gotify
+  namespace: apps
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Monitoring
+    gethomepage.dev/name: Gotify
+    gethomepage.dev/icon: mdi-bell
+    gethomepage.dev/description: Push notifications
+    gethomepage.dev/href: "http://gotify.home.arpa"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: gotify.home.arpa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gotify
+                port:
+                  number: 80
