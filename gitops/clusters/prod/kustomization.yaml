@@ -5,6 +5,7 @@ resources:
   - ../../infra/cloudflared
   - ../../infra/argocd
   - ../../infra/traefik-dashboard
+  - ../../obs/kube-prometheus-stack
   - ../../apps/jellyfin
   - ../../apps/qbittorrent
   - ../../apps/prowlarr

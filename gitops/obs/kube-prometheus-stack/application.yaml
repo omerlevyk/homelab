@@ -1,0 +1,135 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: infra
+spec:
+  project: default
+  destination:
+    namespace: obs
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://prometheus-community.github.io/helm-charts
+    chart: kube-prometheus-stack
+    targetRevision: 82.10.5
+    helm:
+      releaseName: obs
+      values: |
+        alertmanager:
+          enabled: false
+
+        defaultRules:
+          rules:
+            alertmanager: false
+            etcd: false
+            kubeControllerManager: false
+            kubeProxy: false
+            kubeSchedulerAlerting: false
+            kubeSchedulerRecording: false
+
+        kubeEtcd:
+          enabled: false
+
+        kubeControllerManager:
+          enabled: false
+
+        kubeScheduler:
+          enabled: false
+
+        kubeProxy:
+          enabled: false
+
+        grafana:
+          defaultDashboardsEnabled: true
+          ingress:
+            enabled: true
+            ingressClassName: traefik
+            hosts:
+              - grafana.home.arpa
+            path: /
+            annotations:
+              gethomepage.dev/enabled: "true"
+              gethomepage.dev/group: Monitoring
+              gethomepage.dev/name: Grafana
+              gethomepage.dev/icon: grafana.png
+              gethomepage.dev/description: Dashboards and metrics
+              gethomepage.dev/href: "http://grafana.home.arpa"
+          persistence:
+            enabled: true
+            type: sts
+            accessModes:
+              - ReadWriteOnce
+            size: 5Gi
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+
+        prometheus:
+          ingress:
+            enabled: true
+            ingressClassName: traefik
+            hosts:
+              - prometheus.home.arpa
+            paths:
+              - /
+            annotations:
+              gethomepage.dev/enabled: "true"
+              gethomepage.dev/group: Monitoring
+              gethomepage.dev/name: Prometheus
+              gethomepage.dev/icon: prometheus.png
+              gethomepage.dev/description: Metrics and targets
+              gethomepage.dev/href: "http://prometheus.home.arpa"
+          prometheusSpec:
+            retention: 10d
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  accessModes:
+                    - ReadWriteOnce
+                  resources:
+                    requests:
+                      storage: 20Gi
+            resources:
+              requests:
+                cpu: 200m
+                memory: 1Gi
+              limits:
+                cpu: 1
+                memory: 2Gi
+
+        prometheusOperator:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+
+        kubeStateMetrics:
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+
+        nodeExporter:
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
