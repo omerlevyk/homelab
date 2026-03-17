@@ -9,11 +9,21 @@ metadata:
     gethomepage.dev/name: Vaultwarden
     gethomepage.dev/icon: bitwarden.png
     gethomepage.dev/description: Password manager
-    gethomepage.dev/href: "http://vaultwarden.home.arpa"
+    gethomepage.dev/href: "https://homeserver.tail73dbc9.ts.net"
 spec:
   ingressClassName: traefik
   rules:
     - host: vaultwarden.home.arpa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vaultwarden
+                port:
+                  number: 80
+    - host: homeserver.tail73dbc9.ts.net
       http:
         paths:
           - path: /
