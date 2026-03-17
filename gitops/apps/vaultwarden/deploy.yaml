@@ -24,7 +24,7 @@ spec:
             - name: TZ
               value: Asia/Jerusalem
             - name: SIGNUPS_ALLOWED
-              value: "true"
+              value: "false"
             - name: INVITATIONS_ALLOWED
               value: "false"
             - name: ROCKET_PORT
