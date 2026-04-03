@@ -19,4 +19,5 @@ resources:
   - ../../apps/igotify
   - ../../apps/uptime-kuma
   - ../../apps/vaultwarden
+  - ../../apps/syncthing
   - ../../apps/homepage

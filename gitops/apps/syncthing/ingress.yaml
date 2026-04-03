@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: syncthing
+  namespace: apps
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Storage
+    gethomepage.dev/name: Syncthing
+    gethomepage.dev/icon: syncthing.png
+    gethomepage.dev/description: Private file sync hub
+    gethomepage.dev/href: "http://syncthing.home.arpa"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: syncthing.home.arpa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: syncthing-web
+                port:
+                  number: 8384
