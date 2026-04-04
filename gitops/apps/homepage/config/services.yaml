@@ -29,8 +29,3 @@
         icon: cloudflare.png
 
 - Applications: []
-- Storage:
-    - Syncthing:
-        href: http://syncthing.home.arpa
-        description: Private file sync hub
-        icon: syncthing.png
