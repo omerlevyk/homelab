@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tdarr
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tdarr
+  template:
+    metadata:
+      labels:
+        app: tdarr
+        app.kubernetes.io/name: tdarr
+    spec:
+      containers:
+        - name: tdarr
+          image: ghcr.io/haveagitgat/tdarr:latest
+          ports:
+            - containerPort: 8265
+              protocol: TCP
+            - containerPort: 8266
+              protocol: TCP
+          env:
+            - name: TZ
+              value: Asia/Jerusalem
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: UMASK_SET
+              value: "022"
+            - name: serverIP
+              value: "0.0.0.0"
+            - name: serverPort
+              value: "8266"
+            - name: webUIPort
+              value: "8265"
+            - name: internalNode
+              value: "true"
+            - name: inContainer
+              value: "true"
+            - name: ffmpegVersion
+              value: "7"
+            - name: nodeName
+              value: "homeserver-internal"
+            - name: auth
+              value: "false"
+            - name: openBrowser
+              value: "false"
+            - name: maxLogSizeMB
+              value: "10"
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "2"
+              memory: 2Gi
+          volumeMounts:
+            - name: data
+              mountPath: /app/server
+              subPath: server
+            - name: data
+              mountPath: /app/configs
+              subPath: configs
+            - name: data
+              mountPath: /app/logs
+              subPath: logs
+            - name: media
+              mountPath: /srv/media/jellyfin
+            - name: temp
+              mountPath: /temp
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: tdarr-data-pvc
+        - name: media
+          persistentVolumeClaim:
+            claimName: jellyfin-media-pvc
+        - name: temp
+          emptyDir: {}
