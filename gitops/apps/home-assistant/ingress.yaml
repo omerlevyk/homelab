@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: home-assistant
+  namespace: apps
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Home
+    gethomepage.dev/name: Home Assistant
+    gethomepage.dev/icon: home-assistant.png
+    gethomepage.dev/description: Home automation dashboard
+    gethomepage.dev/href: "http://home-assistant.home.arpa"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: home-assistant.home.arpa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: home-assistant
+                port:
+                  number: 8123

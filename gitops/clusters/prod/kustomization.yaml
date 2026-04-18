@@ -21,4 +21,5 @@ resources:
   - ../../apps/uptime-kuma
   - ../../apps/vaultwarden
   - ../../apps/syncthing
+  - ../../apps/home-assistant
   - ../../apps/homepage
