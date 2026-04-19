@@ -5,7 +5,7 @@ metadata:
   namespace: apps
   annotations:
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Home
+    gethomepage.dev/group: Applications
     gethomepage.dev/name: Home Assistant
     gethomepage.dev/icon: home-assistant.png
     gethomepage.dev/description: Home automation dashboard
