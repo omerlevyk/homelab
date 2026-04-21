@@ -22,4 +22,5 @@ resources:
   - ../../apps/vaultwarden
   - ../../apps/syncthing
   - ../../apps/home-assistant
+  - ../../apps/karakeep
   - ../../apps/homepage

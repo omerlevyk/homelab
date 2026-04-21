@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karakeep-meilisearch
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: karakeep-meilisearch
+  template:
+    metadata:
+      labels:
+        app: karakeep-meilisearch
+        app.kubernetes.io/name: karakeep-meilisearch
+        app.kubernetes.io/part-of: karakeep
+    spec:
+      containers:
+        - name: meilisearch
+          image: getmeili/meilisearch:v1.41.0
+          ports:
+            - containerPort: 7700
+              protocol: TCP
+          env:
+            - name: MEILI_NO_ANALYTICS
+              value: "true"
+            - name: MEILI_MASTER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: karakeep-secrets
+                  key: MEILI_MASTER_KEY
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+          volumeMounts:
+            - name: meilisearch
+              mountPath: /meili_data
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 7700
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 7700
+            initialDelaySeconds: 45
+            periodSeconds: 20
+      volumes:
+        - name: meilisearch
+          persistentVolumeClaim:
+            claimName: karakeep-meilisearch-pvc
