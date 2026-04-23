@@ -32,7 +32,18 @@ spec:
                 secretKeyRef:
                   name: karakeep-secrets
                   key: NEXTAUTH_SECRET
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: karakeep-secrets
+                  key: OPENAI_API_KEY
             - name: DB_WAL_MODE
+              value: "true"
+            - name: INFERENCE_ENABLE_AUTO_TAGGING
+              value: "true"
+            - name: INFERENCE_ENABLE_AUTO_SUMMARIZATION
+              value: "true"
+            - name: INFERENCE_USE_MAX_COMPLETION_TOKENS
               value: "true"
             - name: LOG_LEVEL
               value: warning
