@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karakeep
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: karakeep
+  template:
+    metadata:
+      labels:
+        app: karakeep
+        app.kubernetes.io/name: karakeep
+    spec:
+      containers:
+        - name: karakeep
+          image: ghcr.io/karakeep-app/karakeep:release
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          env:
+            - name: TZ
+              value: Asia/Jerusalem
+            - name: DATA_DIR
+              value: /data
+            - name: NEXTAUTH_URL
+              value: http://karakeep.home.arpa
+            - name: NEXTAUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: karakeep-secrets
+                  key: NEXTAUTH_SECRET
+            - name: DB_WAL_MODE
+              value: "true"
+            - name: LOG_LEVEL
+              value: warning
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 90
+            periodSeconds: 20
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: karakeep-data-pvc
