@@ -35,3 +35,47 @@ terraform plan -var-file=env/prod/terraform.tfvars -var='enable_cloudflare_tunne
 - Keep homelab kubeconfig isolated from other projects.
 - Do not commit Cloudflare API tokens to git; use environment variables.
 - Avoid applying destructive changes to `dns` resources without a backup/rollback plan.
+
+## Recovery Notes
+
+### 2026-05-26 to 2026-06-06
+
+What we fixed:
+- Confirmed the live cluster is `homeserver2` via `/home/omer/.kube/homeserver2-k3s.yaml`.
+- Identified that `~/.kube/config` was pointing to `homeserver-k3s-tunnel.yaml` using `https://127.0.0.1:16443`, and that local tunnel endpoint was down.
+- Restored the media stack by clearing the stale static PV binding on `jellyfin-media-pv`:
+
+```bash
+kubectl patch pv jellyfin-media-pv --type=json -p='[{"op":"remove","path":"/spec/claimRef"}]'
+```
+
+- Rebound `apps/jellyfin-media-pvc` to `jellyfin-media-pv`, which unblocked:
+  - `jellyfin`
+  - `qbittorrent`
+  - `sonarr`
+  - `radarr`
+  - `lidarr`
+  - `bazarr`
+  - `tdarr`
+- Restored `cloudflared` by replacing the placeholder secret value in `infra/cloudflared-token` with a real connector token and restarting the deployment.
+- Resolved the Kubernetes-level `igotify` failure by creating the missing secret `apps/igotify-local-instance` and restarting the deployment.
+
+Current status:
+- Cluster workloads are running again on `homeserver2`.
+- `cloudflared` is connected and receiving Cloudflare tunnel config.
+- The shared Jellyfin media PV/PVC is bound again.
+- `igotify` now starts, but its application config still needs real values.
+
+What is still left:
+- Replace placeholder values in `apps/igotify-local-instance`:
+  - `gotify_urls`
+  - `gotify_client_tokens`
+  - `secntfy_tokens`
+- Verify `gotify_urls` points to the real in-cluster Gotify service, not a placeholder string.
+- Rotate the Cloudflare connector token because it was exposed during manual recovery, then update `infra/cloudflared-token` again.
+- Consider repointing `~/.kube/config` away from the dead `homeserver-k3s-tunnel.yaml` symlink to avoid future confusion.
+- Verify ArgoCD application health/sync status after manual secret fixes.
+
+Notes:
+- `gitops/infra/cloudflared/README.md` documents the required secret, but the live failure was caused by the secret containing example text instead of a real token.
+- `gitops/apps/igotify/deploy.yaml` expects a manually supplied secret and will fail with `CreateContainerConfigError` if `igotify-local-instance` is absent.
