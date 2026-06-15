@@ -1,26 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../infra/dns/adguard
-  - ../../infra/cloudflared
   - ../../infra/argocd
-  - ../../infra/traefik-dashboard
   - ../../obs/prometheus-operator-crds
   - ../../obs/kube-prometheus-stack
-  - ../../apps/jellyfin
-  - ../../apps/qbittorrent
-  - ../../apps/prowlarr
-  - ../../apps/sonarr
-  - ../../apps/radarr
-  - ../../apps/lidarr
-  - ../../apps/bazarr
-  - ../../apps/overseerr
-  - ../../apps/tdarr
-  - ../../apps/gotify
-  - ../../apps/igotify
-  - ../../apps/uptime-kuma
-  - ../../apps/vaultwarden
-  - ../../apps/syncthing
-  - ../../apps/home-assistant
-  - ../../apps/karakeep
-  - ../../apps/homepage
+  - applications

@@ -9,6 +9,11 @@ resource "helm_release" "argocd" {
   # Keep this installation minimal; ingress/routing is handled separately.
   values = [
     yamlencode({
+      configs = {
+        params = {
+          "server.insecure" = "true"
+        }
+      }
       server = {
         service = {
           type = "ClusterIP"
