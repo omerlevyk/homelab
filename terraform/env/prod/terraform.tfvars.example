@@ -1,5 +1,5 @@
-cluster_name       = "homeserver2-k3s"
-kubeconfig_path    = "~/.kube/homeserver2-k3s.yaml"
+cluster_name       = "homeserver-k3s"
+kubeconfig_path    = "~/.kube/homeserver-k3s.yaml"
 kubeconfig_context = "default"
 
 # Keep false until ready to install ArgoCD:

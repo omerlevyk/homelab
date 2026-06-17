@@ -191,6 +191,32 @@ Validation: LAN and Tailscale clients resolve internal hostnames and reach apps.
 - Enabled `Seerr` inside Jellyfin for in-app request/discovery workflow on supported Jellyfin UI paths/clients.
 - Kept `Seerr` as the backing request service for approvals and media acquisition flow.
 
+### 2026-06-17
+- Renamed the OS hostname on the active server to `homeserver` while keeping the Linux user as `homeserver2`.
+- Fixed local `kubectl` access on the server by restoring a working kubeconfig under `/home/homeserver2/.kube/config`.
+- Diagnosed the hostname-rename fallout: bound PVs still had immutable node affinity pinned to `homeserver2`, which left most stateful apps `Pending`.
+- Restored scheduling safely by making `k3s` register the node again as `homeserver2` through `/etc/systemd/system/k3s.service.env`.
+- Deleted the stale `homeserver` node object after the recovery so the cluster returned to a single active node.
+- Repaired host DNS handling so `/etc/resolv.conf` uses `systemd-resolved` again.
+- Diagnosed the public app outage as a DNS recursion/upstream problem:
+  - host link DNS preferred a broken IPv6 resolver
+  - `CoreDNS` timed out forwarding through `AdGuard`
+  - `cloudflared` failed SRV and API lookups
+- Changed the host resolver on `eno1` to IPv4-only upstreams (`1.1.1.1`, `1.0.0.1`).
+- Updated `AdGuard` upstream DNS away from the broken/self-referential path and restarted `AdGuard`, `CoreDNS`, and `cloudflared`.
+- Validation:
+  - `cloudflared` connectivity prechecks passed
+  - internal `Homepage` recovered on `homepage.home.arpa`
+  - public `Homepage` recovered on `https://homepage.omerlevy03.com`
+- Current naming reality after recovery:
+  - OS hostname = `homeserver`
+  - Linux user = `homeserver2`
+  - k3s node name = `homeserver2`
+- Next:
+  - make the host DNS settings persistent so they survive reboot
+  - revert repo changes that incorrectly assumed the live k3s node name changed to `homeserver`
+  - fix remaining app-level readiness issues for `Home Assistant`, `iGotify`, `Syncthing`, `Uptime Kuma`, and `Vaultwarden`
+
 ---
 
 ## Applications Roadmap (Checklist)

@@ -13,7 +13,7 @@ variable "kubeconfig_context" {
 variable "cluster_name" {
   description = "Logical cluster name label used in metadata and outputs."
   type        = string
-  default     = "homeserver2-k3s"
+  default     = "homeserver-k3s"
 }
 
 variable "enable_argocd_bootstrap" {

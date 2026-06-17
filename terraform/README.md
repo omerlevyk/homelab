@@ -2,7 +2,7 @@
 
 Terraform bootstrap layer for the homelab k3s cluster.
 
-This repo should target `homeserver2`, not the retired `homeserver` node.
+This repo should target `homeserver`, which is now the active cluster node.
 
 ## Current Scope
 - Provider wiring (`kubernetes`, `helm`, `cloudflare`)
@@ -31,7 +31,7 @@ terraform plan -var-file=env/prod/terraform.tfvars -var='enable_cloudflare_tunne
 ```
 
 ## Notes
-- Verify the kubeconfig path/context point at `homeserver2` before every Terraform apply.
+- Verify the kubeconfig path/context point at `homeserver` before every Terraform apply.
 - Keep homelab kubeconfig isolated from other projects.
 - Do not commit Cloudflare API tokens to git; use environment variables.
 - Avoid applying destructive changes to `dns` resources without a backup/rollback plan.
@@ -41,7 +41,7 @@ terraform plan -var-file=env/prod/terraform.tfvars -var='enable_cloudflare_tunne
 ### 2026-05-26 to 2026-06-06
 
 What we fixed:
-- Confirmed the live cluster is `homeserver2` via `/home/omer/.kube/homeserver2-k3s.yaml`.
+- Confirmed the live cluster is `homeserver` via `/home/omer/.kube/homeserver-k3s.yaml`.
 - Identified that `~/.kube/config` was pointing to `homeserver-k3s-tunnel.yaml` using `https://127.0.0.1:16443`, and that local tunnel endpoint was down.
 - Restored the media stack by clearing the stale static PV binding on `jellyfin-media-pv`:
 
@@ -61,7 +61,7 @@ kubectl patch pv jellyfin-media-pv --type=json -p='[{"op":"remove","path":"/spec
 - Resolved the Kubernetes-level `igotify` failure by creating the missing secret `apps/igotify-local-instance` and restarting the deployment.
 
 Current status:
-- Cluster workloads are running again on `homeserver2`.
+- Cluster workloads are running again on `homeserver`.
 - `cloudflared` is connected and receiving Cloudflare tunnel config.
 - The shared Jellyfin media PV/PVC is bound again.
 - `igotify` now starts, but its application config still needs real values.
