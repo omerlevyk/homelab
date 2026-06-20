@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emby
+  namespace: apps
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: emby
+  template:
+    metadata:
+      labels:
+        app: emby
+        app.kubernetes.io/name: emby
+    spec:
+      containers:
+        - name: emby
+          image: lscr.io/linuxserver/emby:latest
+          ports:
+            - containerPort: 8096
+              protocol: TCP
+          env:
+            - name: TZ
+              value: Asia/Jerusalem
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: UMASK
+              value: "022"
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "2"
+              memory: 2Gi
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: media
+              mountPath: /media
+            - name: dri
+              mountPath: /dev/dri
+          securityContext:
+            privileged: true
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: emby-config-pvc
+        - name: media
+          persistentVolumeClaim:
+            claimName: jellyfin-media-pvc
+        - name: dri
+          hostPath:
+            path: /dev/dri
+            type: Directory

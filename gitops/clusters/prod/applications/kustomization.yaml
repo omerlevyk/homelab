@@ -5,6 +5,7 @@ resources:
   - cloudflared.yaml
   - traefik-dashboard.yaml
   - jellyfin.yaml
+  - emby.yaml
   - qbittorrent.yaml
   - prowlarr.yaml
   - sonarr.yaml

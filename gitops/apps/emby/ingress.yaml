@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: emby
+  namespace: apps
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Applications
+    gethomepage.dev/name: Emby
+    gethomepage.dev/icon: emby.png
+    gethomepage.dev/description: Media streaming
+    gethomepage.dev/href: "http://emby.home.arpa"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: emby.home.arpa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: emby
+                port:
+                  number: 8096
