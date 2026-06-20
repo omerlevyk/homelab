@@ -4,7 +4,7 @@ metadata:
   name: tdarr
   namespace: apps
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: tdarr
@@ -68,15 +68,11 @@ spec:
             - name: data
               mountPath: /app/logs
               subPath: logs
-            - name: media-root
+            - name: media
               mountPath: /srv/media
             - name: temp
               mountPath: /temp
       volumes:
-        - name: media-root
-          hostPath:
-            path: /srv/media
-            type: Directory
         - name: data
           persistentVolumeClaim:
             claimName: tdarr-data-pvc
