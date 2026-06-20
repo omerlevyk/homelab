@@ -45,10 +45,16 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+            - name: media-root
+              mountPath: /srv/media
             - name: media
               mountPath: /downloads
               subPath: downloads
       volumes:
+        - name: media-root
+          hostPath:
+            path: /srv/media
+            type: Directory
         - name: config
           persistentVolumeClaim:
             claimName: qbittorrent-config-pvc

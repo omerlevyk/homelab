@@ -68,11 +68,15 @@ spec:
             - name: data
               mountPath: /app/logs
               subPath: logs
-            - name: media
-              mountPath: /srv/media/jellyfin
+            - name: media-root
+              mountPath: /srv/media
             - name: temp
               mountPath: /temp
       volumes:
+        - name: media-root
+          hostPath:
+            path: /srv/media
+            type: Directory
         - name: data
           persistentVolumeClaim:
             claimName: tdarr-data-pvc

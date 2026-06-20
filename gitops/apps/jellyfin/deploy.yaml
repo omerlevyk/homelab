@@ -55,9 +55,15 @@ spec:
               mountPath: /config
             - name: cache
               mountPath: /cache
+            - name: media-root
+              mountPath: /srv/media
             - name: media
               mountPath: /media
       volumes:
+        - name: media-root
+          hostPath:
+            path: /srv/media
+            type: Directory
         - name: config
           persistentVolumeClaim:
             claimName: jellyfin-config-pvc
