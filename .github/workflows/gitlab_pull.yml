@@ -1,0 +1,29 @@
+name: Pull from GitLab
+
+on:
+  repository_dispatch:
+    types: [gitlab-push]
+
+jobs:
+  pull-from-gitlab:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Pull from GitLab
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+          SOURCE_BRANCH: master
+          TARGET_BRANCH: master
+        run: |
+          git remote add gitlab https://oauth2:${GITLAB_TOKEN}@gitlab.com/omerlevyk/homelab.git
+          git fetch gitlab ${SOURCE_BRANCH}
+          git reset --hard gitlab/${TARGET_BRANCH}
+          git push origin ${TARGET_BRANCH} --force
+          git fetch gitlab --tags
+          git push origin --tags --force
