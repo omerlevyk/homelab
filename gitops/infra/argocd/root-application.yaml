@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: infra
   source:
-    repoURL: https://github.com/omerlevyk/homelab.git
+    repoURL: https://gitlab.com/omerlevyk/homelab.git
     targetRevision: main
     path: gitops/clusters/prod
   syncPolicy:
