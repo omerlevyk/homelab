@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: prod-apps
+  namespace: infra
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - list:
+        elements:
+          # ── Wave 1 – Infrastructure ──────────────────────────────────
+          - { name: adguard,              syncWave: "1", namespace: dns }
+          - { name: cloudflared,          syncWave: "1", namespace: infra }
+          - { name: traefik-dashboard,    syncWave: "1", namespace: kube-system }
+          # ── Wave 2 – Platform / Utilities ────────────────────────────
+          - { name: gotify,               syncWave: "2", namespace: apps}
+          - { name: igotify,              syncWave: "2", namespace: apps}
+          - { name: homepage,             syncWave: "2", namespace: apps}
+          - { name: uptime-kuma,          syncWave: "2", namespace: apps}
+          # ── Wave 3 – Applications ────────────────────────────────────
+          - { name: bazarr,               syncWave: "3", namespace: apps}
+          - { name: emby,                 syncWave: "3", namespace: apps}
+          - { name: home-assistant,       syncWave: "3", namespace: apps}
+          - { name: jellyfin,             syncWave: "3", namespace: apps}
+          - { name: karakeep,             syncWave: "3", namespace: apps}
+          - { name: lidarr,               syncWave: "3", namespace: apps}
+          - { name: overseerr,            syncWave: "3", namespace: apps}
+          - { name: prowlarr,             syncWave: "3", namespace: apps}
+          - { name: qbittorrent,          syncWave: "3", namespace: apps}
+          - { name: radarr,               syncWave: "3", namespace: apps}
+          - { name: sonarr,               syncWave: "3", namespace: apps}
+          - { name: syncthing,            syncWave: "3", namespace: apps}
+          - { name: tdarr,                syncWave: "3", namespace: apps}
+          - { name: vaultwarden,          syncWave: "3", namespace: apps}
+  template:
+    metadata:
+      name: "{{ .name }}"
+      namespace: infra
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ .syncWave }}'
+    spec:
+      project: default
+      destination:
+        namespace: '{{ .namespace }}'
+        server: https://kubernetes.default.svc
+      source:
+        repoURL: https://github.com/omerlevyk/homelab.git
+        targetRevision: main
+        path: 'gitops/{{ .namespace }}/{{ .name }}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=false

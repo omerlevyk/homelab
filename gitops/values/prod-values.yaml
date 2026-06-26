@@ -1,0 +1,27 @@
+# ──────────────────────────────────────────────────────────────
+# Prod cluster – shared environment values
+# ──────────────────────────────────────────────────────────────
+# These values are referenced in the ApplicationSet template at:
+#   clusters/prod/applications/appset.yaml
+#
+# If you add a staging cluster, create a staging-values.yaml
+# with its own repoURL / targetRevision / server overrides.
+# ──────────────────────────────────────────────────────────────
+
+# ── Git source ─────────────────────────────────────────────────
+repoURL: https://github.com/omerlevyk/homelab.git
+targetRevision: main
+basePath: gitops            # root of all kustomize paths
+
+# ── Cluster ────────────────────────────────────────────────────
+server: https://kubernetes.default.svc
+project: default
+argocdNamespace: infra      # namespace where ArgoCD + ApplicationSet live
+
+# ── Sync policy ───────────────────────────────────────────────
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=false
