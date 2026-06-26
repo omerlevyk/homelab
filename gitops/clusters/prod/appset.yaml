@@ -16,14 +16,14 @@ spec:
           - { name: traefik-dashboard,    syncWave: "1", namespace: kube-system }
           # ── Wave 2 – Platform / Utilities ────────────────────────────
           - { name: gotify,               syncWave: "2", namespace: apps}
-          - { name: igotify,              syncWave: "2", namespace: apps}
+          #- { name: igotify,              syncWave: "2", namespace: apps}
           - { name: homepage,             syncWave: "2", namespace: apps}
-          - { name: uptime-kuma,          syncWave: "2", namespace: apps}
+          #- { name: uptime-kuma,          syncWave: "2", namespace: apps}
           # ── Wave 3 – Applications ────────────────────────────────────
           - { name: bazarr,               syncWave: "3", namespace: apps}
           - { name: emby,                 syncWave: "3", namespace: apps}
           - { name: home-assistant,       syncWave: "3", namespace: apps}
-         # - { name: jellyfin,             syncWave: "3", namespace: apps}
+          - { name: jellyfin,             syncWave: "3", namespace: apps}
           - { name: karakeep,             syncWave: "3", namespace: apps}
           - { name: lidarr,               syncWave: "3", namespace: apps}
           - { name: overseerr,            syncWave: "3", namespace: apps}
@@ -31,9 +31,9 @@ spec:
           - { name: qbittorrent,          syncWave: "3", namespace: apps}
           - { name: radarr,               syncWave: "3", namespace: apps}
           - { name: sonarr,               syncWave: "3", namespace: apps}
-          - { name: syncthing,            syncWave: "3", namespace: apps}
+          #- { name: syncthing,            syncWave: "3", namespace: apps}
           - { name: tdarr,                syncWave: "3", namespace: apps}
-          - { name: vaultwarden,          syncWave: "3", namespace: apps}
+          #- { name: vaultwarden,          syncWave: "3", namespace: apps}
   template:
     metadata:
       name: "{{ .name }}"
