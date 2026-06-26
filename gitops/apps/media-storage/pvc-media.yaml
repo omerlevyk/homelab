@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: jellyfin-media-pvc
+  name: media-pvc
   namespace: apps
 spec:
   storageClassName: local-media
-  volumeName: jellyfin-media-pv
+  volumeName: media-pv
   accessModes:
     - ReadWriteOnce
   resources:

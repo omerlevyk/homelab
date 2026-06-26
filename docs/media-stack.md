@@ -11,7 +11,7 @@ Build a complete, private-by-default media stack on k3s with GitOps, extending t
 
 ## Current State
 - [x] Jellyfin is deployed in namespace `apps`.
-- [x] Jellyfin media PV is planned to move to `/data/media/jellyfin` on `homeserver2`.
+- [x] Jellyfin media PV is planned to move to `/data/media/` on `homeserver2`.
 - [x] Media library currently contains ~24 GB of videos.
 - [x] Cluster sync path includes `gitops/clusters/prod/kustomization.yaml`.
 
@@ -37,16 +37,16 @@ Optional later:
 ---
 
 ## Phase 0: Storage + Layout Prerequisites
-- [x] Define canonical media paths under `/data/media/jellyfin`.
+- [x] Define canonical media paths under `/data/media/`.
 Validation: paths are documented and used consistently across all app mounts.
 
 Recommended layout:
-- `/data/media/jellyfin/downloads/incomplete`
-- `/data/media/jellyfin/downloads/complete`
-- `/data/media/jellyfin/library/movies`
-- `/data/media/jellyfin/library/tv`
-- `/data/media/jellyfin/library/music`
-- `/data/media/jellyfin/library/subtitles`
+- `/data/media/downloads/incomplete`
+- `/data/media/downloads/complete`
+- `/data/media/library/movies`
+- `/data/media/library/tv`
+- `/data/media/library/music`
+- `/data/media/library/subtitles`
 
 - [x] Create and permission all required directories on `homeserver2`.
 Validation: container runtime UID/GID can read/write all paths.

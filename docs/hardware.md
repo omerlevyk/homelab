@@ -93,7 +93,7 @@ Owner: Omer
 - Installed k3s on `homeserver2`.
 - Updated the k3s `local-path` provisioner to use `/srv/local-path-provisioner` on the HDD instead of the default SSD-backed path under `/var/lib/rancher/k3s/storage`.
 - Validated dynamic PVC provisioning on the HDD by creating a test claim and test pod; confirmed data was written under `/srv/local-path-provisioner/.../probe.txt`.
-- Created `/srv/media/jellyfin` on the HDD for the static Jellyfin media PV expected by the GitOps manifests.
+- Created `/srv/media` on the HDD for the static media PV expected by the GitOps manifests.
 - Generated a remote kubeconfig for `homeserver2` using `https://192.168.1.101:6443` and copied it to `omerPC` as `~/.kube/homeserver2-k3s.yaml`.
 - Verified remote cluster access from `omerPC` with `kubectl --kubeconfig ~/.kube/homeserver2-k3s.yaml get nodes`.
 - Updated Terraform usage to target `homeserver2` and applied the bootstrap namespaces (`apps`, `dns`, `infra`, `obs`) to the new cluster.

@@ -53,7 +53,7 @@ spec:
             claimName: emby-config-pvc
         - name: media
           persistentVolumeClaim:
-            claimName: jellyfin-media-pvc
+            claimName: media-pvc
         - name: dri
           hostPath:
             path: /dev/dri

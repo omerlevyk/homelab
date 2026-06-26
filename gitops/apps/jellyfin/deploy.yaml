@@ -65,7 +65,7 @@ spec:
           emptyDir: {}
         - name: media
           persistentVolumeClaim:
-            claimName: jellyfin-media-pvc
+            claimName: media-pvc
         - name: dri
           hostPath:
             path: /dev/dri
