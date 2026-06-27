@@ -9,7 +9,7 @@
 # ──────────────────────────────────────────────────────────────
 
 # ── Git source ─────────────────────────────────────────────────
-repoURL: https://github.com/omerlevyk/homelab.git
+repoURL: https://gitlab.com/omerlevyk/homelab.git
 targetRevision: main
 basePath: gitops            # root of all kustomize paths
 
