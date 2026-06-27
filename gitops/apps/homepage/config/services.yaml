@@ -6,9 +6,8 @@
     - GitLab:
         href: https://gitlab.com/omerlevyk/homelab/
         description: Source control
-        icon: gilab.png
-
-
+        icon: https://p1.hiclipart.com/preview/691/625/170/numix-circle-for-windows-gitlab-icon-png-icon-thumbnail.jpg
+    
 - Networking:
     - AdGuard:
         href: http://adguard.home.arpa
