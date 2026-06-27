@@ -3,6 +3,11 @@
         href: https://github.com/
         description: Source control
         icon: github.png
+    - GitLab:
+        href: https://gitlab.com/omerlevyk/homelab/
+        description: Source control
+        icon: gilab.png
+
 
 - Networking:
     - AdGuard:
