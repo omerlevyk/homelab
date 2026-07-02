@@ -1,0 +1,143 @@
+apps:
+  emby:
+    name: emby
+    port: 8096
+    external: true
+    homepageGroup: Applications
+    homepageDescription: Media streaming
+    pvcs:
+      - name: config
+        size: 10Gi
+
+  jellyfin:
+    name: jellyfin
+    port: 8096
+    external: true
+    homepageGroup: Applications
+    homepageDescription: Media streaming
+    extraAnnotations:
+      gethomepage.dev/pod-selector: "app=jellyfin"
+    pvcs:
+      - name: config
+        size: 10Gi
+
+  radarr:
+    name: radarr
+    port: 7878
+    external: false
+    homepageGroup: Media
+    homepageDescription: Movie management
+    pvcs:
+      - name: config
+        size: 5Gi
+
+  sonarr:
+    name: sonarr
+    port: 8989
+    external: false
+    homepageGroup: Media
+    homepageDescription: TV management
+    pvcs:
+      - name: config
+        size: 5Gi
+
+  bazarr:
+    name: bazarr
+    port: 6767
+    external: false
+    homepageGroup: Media
+    homepageDescription: Subtitle management
+    pvcs:
+      - name: config
+        size: 3Gi
+
+  overseerr:
+    name: overseerr
+    port: 5055
+    external: false
+    homepageGroup: Applications
+    homepageDescription: Media requests
+    pvcs:
+      - name: config
+        size: 2Gi
+
+  home-assistant:
+    name: home-assistant
+    port: 8123
+    external: false
+    homepageGroup: Applications
+    homepageDescription: Home automation
+    pvcs:
+      - name: config
+        size: 5Gi
+
+  qbittorrent:
+    name: qbittorrent
+    port: 8080
+    external: false
+    homepageGroup: Media
+    homepageDescription: Torrent client
+    extraPorts:
+      - name: bittorrent-tcp
+        port: 6881
+        protocol: TCP
+      - name: bittorrent-udp
+        port: 6881
+        protocol: UDP
+    pvcs:
+      - name: config
+        size: 5Gi
+
+  lidarr:
+    name: lidarr
+    port: 8686
+    external: false
+    homepageGroup: Media
+    homepageDescription: Music management
+    pvcs:
+      - name: config
+        size: 5Gi
+
+  prowlarr:
+    name: prowlarr
+    port: 9696
+    external: false
+    homepageGroup: Media
+    homepageDescription: Indexer management
+    pvcs:
+      - name: config
+        size: 3Gi
+
+  tdarr:
+    name: tdarr
+    port: 8265
+    external: false
+    homepageGroup: Media
+    homepageDescription: Media transcoding
+    extraPorts:
+      - name: server
+        port: 8266
+        protocol: TCP
+    pvcs:
+      - name: data
+        size: 5Gi
+
+  karakeep:
+    name: karakeep
+    port: 3000
+    external: false
+    homepageGroup: Applications
+    homepageDescription: Bookmarks
+    pvcs:
+      - name: data
+        size: 10Gi
+
+  gotify:
+    name: gotify
+    port: 80
+    external: false
+    homepageGroup: Applications
+    homepageDescription: Push notifications
+    pvcs:
+      - name: data
+        size: 1Gi

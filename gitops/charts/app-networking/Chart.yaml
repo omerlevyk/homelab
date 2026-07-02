@@ -1,0 +1,4 @@
+apiVersion: v2
+name: app-networking
+description: Centralized networking (ingress + service) chart for all homelab apps
+version: 0.1.0

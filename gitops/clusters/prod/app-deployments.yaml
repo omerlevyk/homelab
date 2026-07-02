@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-deployments
+  namespace: infra
+spec:
+  project: default
+  destination:
+    namespace: apps
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://gitlab.com/omerlevyk/homelab.git
+    targetRevision: main
+    path: gitops/app-deployments
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
   - namespaces.yaml
   - appset.yaml
+  - app-networking.yaml
+  - app-deployments.yaml
   - ../../infra/argocd
   - ../../obs/prometheus-operator-crds
   - ../../obs/kube-prometheus-stack

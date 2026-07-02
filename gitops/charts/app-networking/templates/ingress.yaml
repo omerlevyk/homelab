@@ -1,0 +1,47 @@
+{{- range $key, $app := .Values.apps }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $app.name }}
+  namespace: {{ $app.namespace | default "apps" }}
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: {{ $app.homepageGroup | default "Applications" }}
+    gethomepage.dev/name: {{ $app.homepageName | default ($app.name | title) }}
+    gethomepage.dev/icon: {{ $app.homepageIcon | default (printf "%s.png" $app.name) }}
+    gethomepage.dev/description: {{ $app.homepageDescription | default "" | quote }}
+    {{- if $app.external }}
+    gethomepage.dev/href: "https://{{ $app.name }}.omerlevy03.com"
+    {{- else }}
+    gethomepage.dev/href: "http://{{ $app.name }}.home.arpa"
+    {{- end }}
+    {{- range $k, $v := $app.extraAnnotations }}
+    {{ $k }}: {{ $v | quote }}
+    {{- end }}
+spec:
+  ingressClassName: traefik
+  rules:
+    {{- if $app.external }}
+    - host: {{ $app.name }}.omerlevy03.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $app.name }}
+                port:
+                  number: {{ $app.port }}
+    {{- end }}
+    - host: {{ $app.name }}.home.arpa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $app.name }}
+                port:
+                  number: {{ $app.port }}
+{{- end }}
