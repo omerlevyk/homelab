@@ -10,6 +10,7 @@ apps:
         size: 10Gi
 
   jellyfin:
+    enabled: false
     name: jellyfin
     port: 8096
     external: true
