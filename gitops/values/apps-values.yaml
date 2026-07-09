@@ -2,7 +2,7 @@ apps:
   emby:
     name: emby
     port: 8096
-    external: true
+    external: false
     homepageGroup: Applications
     homepageDescription: Media streaming
     pvcs:
