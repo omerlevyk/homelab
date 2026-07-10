@@ -55,7 +55,7 @@ apps:
   overseerr:
     name: overseerr
     port: 5055
-    external: true
+    external: false
     homepageGroup: Applications
     homepageDescription: Media requests
     pvcs:
