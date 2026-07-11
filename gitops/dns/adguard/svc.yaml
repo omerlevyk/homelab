@@ -5,6 +5,8 @@ metadata:
   namespace: dns
 spec:
   type: LoadBalancer
+  externalIPs:
+  - 100.78.208.9
   selector:
     app: adguard
   ports:
