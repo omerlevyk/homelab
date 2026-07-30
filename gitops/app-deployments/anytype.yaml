@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: anytype
-          image: anyproto/anytype-heart:latest
+          image: ghcr.io/grishy/any-sync-bundle:latest
           ports:
             - containerPort: 31009
               protocol: TCP
