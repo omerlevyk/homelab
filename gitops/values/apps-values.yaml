@@ -1,13 +1,13 @@
 apps:
-  emby:
-    name: emby
-    port: 8096
-    external: false
-    homepageGroup: Applications
-    homepageDescription: Media streaming
-    pvcs:
-      - name: config
-        size: 10Gi
+  #emby:
+  #  name: emby
+  #  port: 8096
+  #  external: false
+  #  homepageGroup: Applications
+  #  homepageDescription: Media streaming
+  #  pvcs:
+  #    - name: config
+  #      size: 10Gi
 
   jellyfin:
     enabled: false
@@ -133,12 +133,12 @@ apps:
       - name: data
         size: 10Gi
 
-  gotify:
-    name: gotify
-    port: 80
-    external: false
-    homepageGroup: Applications
-    homepageDescription: Push notifications
-    pvcs:
-      - name: data
-        size: 1Gi
+  #gotify:
+  #  name: gotify
+  #  port: 80
+  #  external: false
+  #  homepageGroup: Applications
+  #  homepageDescription: Push notifications
+  #  pvcs:
+  #    - name: data
+  #      size: 1Gi
