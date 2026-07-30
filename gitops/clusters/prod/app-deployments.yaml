@@ -1,18 +1,45 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: app-deployments
   namespace: infra
 spec:
-  project: default
-  destination:
-    namespace: apps
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://gitlab.com/omerlevyk/homelab.git
-    targetRevision: main
-    path: gitops/app-deployments
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - list:
+        elements:
+          - { name: anytype,       include: "anytype.yaml" }
+          - { name: bazarr,         include: "bazarr.yaml" }
+          - { name: emby,           include: "emby.yaml" }
+          - { name: gotify,         include: "gotify.yaml" }
+          - { name: home-assistant, include: "home-assistant*.yaml" }
+          - { name: jellyfin,       include: "jellyfin.yaml" }
+          - { name: karakeep,       include: "karakeep*.yaml" }
+          - { name: lidarr,         include: "lidarr.yaml" }
+          - { name: overseerr,      include: "overseerr.yaml" }
+          - { name: prowlarr,       include: "prowlarr.yaml" }
+          - { name: qbittorrent,    include: "qbittorrent.yaml" }
+          - { name: radarr,         include: "radarr.yaml" }
+          - { name: sonarr,         include: "sonarr.yaml" }
+          - { name: tdarr,          include: "tdarr.yaml" }
+  template:
+    metadata:
+      name: "{{ .name }}"
+      namespace: infra
+    spec:
+      project: default
+      destination:
+        namespace: apps
+        server: https://kubernetes.default.svc
+      source:
+        repoURL: https://gitlab.com/omerlevyk/homelab.git
+        targetRevision: main
+        path: gitops/app-deployments
+        directory:
+          recurse: false
+          include: "{{ .include }}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
