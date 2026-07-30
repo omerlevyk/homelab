@@ -142,3 +142,9 @@ apps:
     pvcs:
       - name: data
         size: 1Gi
+  anytype:
+    name: anytype
+    port: 31009
+    external: false
+    homepageGroup: Networking
+    homepageDescription: Syncing Server
