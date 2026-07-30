@@ -11,8 +11,8 @@ spec:
         elements:
           - { name: anytype,       include: "anytype.yaml" }
           - { name: bazarr,         include: "bazarr.yaml" }
-          - { name: emby,           include: "emby.yaml" }
-          - { name: gotify,         include: "gotify.yaml" }
+          #- { name: emby,           include: "emby.yaml" }
+          #- { name: gotify,         include: "gotify.yaml" }
           - { name: home-assistant, include: "home-assistant*.yaml" }
           - { name: jellyfin,       include: "jellyfin.yaml" }
           - { name: karakeep,       include: "karakeep*.yaml" }
