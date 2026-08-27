@@ -9,7 +9,7 @@ spec:
   generators:
     - list:
         elements:
-          - { name: anytype,       include: "anytype.yaml" }
+          #- { name: anytype,       include: "anytype.yaml" }
           - { name: bazarr,         include: "bazarr.yaml" }
           #- { name: emby,           include: "emby.yaml" }
           #- { name: gotify,         include: "gotify.yaml" }
