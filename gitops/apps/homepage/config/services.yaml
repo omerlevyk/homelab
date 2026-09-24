@@ -32,4 +32,8 @@
         description: DNS, tunnels, and edge
         icon: cloudflare.png
 
-- Applications: []
+- Applications:
+    - Studio NSL:
+        href: http://studionsl.home.arpa
+        description: Studio NSL landing page (private preview)
+        icon: mdi-web
