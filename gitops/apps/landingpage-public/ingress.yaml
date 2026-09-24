@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: landingpage-internal
+  name: landingpage-public
   namespace: apps
 spec:
   ingressClassName: traefik
   rules:
-    - host: landingpage.home.arpa
+    - host: studionsl.com
       http:
         paths:
           - path: /
@@ -16,7 +16,7 @@ spec:
                 name: landingpage
                 port:
                   number: 8080
-    - host: studionsl.home.arpa
+    - host: www.studionsl.com
       http:
         paths:
           - path: /
