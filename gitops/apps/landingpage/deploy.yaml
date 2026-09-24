@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: landingpage
-          image: registry.gitlab.com/omerlevyk/landingpage_new:latest
+          image: docker.io/omerlevyk/landingpage:latest
           ports:
             - containerPort: 8080
               protocol: TCP
