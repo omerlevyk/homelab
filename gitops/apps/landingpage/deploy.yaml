@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: landingpage
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: landingpage
+  template:
+    metadata:
+      labels:
+        app: landingpage
+        app.kubernetes.io/name: landingpage
+    spec:
+      containers:
+        - name: landingpage
+          image: registry.gitlab.com/omerlevyk/landingpage_new:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 20

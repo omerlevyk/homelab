@@ -10,6 +10,10 @@ resource "helm_release" "argocd" {
   values = [
     yamlencode({
       configs = {
+        cm = {
+          # Argo CD uses this for links and redirects served through Traefik.
+          url = "https://argocd.home.arpa"
+        }
         params = {
           "server.insecure" = "true"
         }

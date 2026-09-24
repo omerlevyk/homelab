@@ -16,6 +16,7 @@ spec:
           - { name: traefik-dashboard,    syncWave: "1", namespace: kube-system }
           # ── Wave 2 – Platform / Utilities ────────────────────────────
           - { name: homepage,             syncWave: "2", namespace: apps}
+          - { name: landingpage,          syncWave: "2", namespace: apps}
           #- { name: igotify,              syncWave: "2", namespace: apps}
           #- { name: uptime-kuma,          syncWave: "2", namespace: apps}
   template:
