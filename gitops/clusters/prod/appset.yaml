@@ -17,6 +17,7 @@ spec:
           # ── Wave 2 – Platform / Utilities ────────────────────────────
           - { name: homepage,             syncWave: "2", namespace: apps}
           - { name: landingpage,          syncWave: "2", namespace: apps}
+          - { name: cv,                   syncWave: "2", namespace: apps}
           # Public website toggle — uncomment to make studionsl.com live.
           - { name: landingpage-public,   syncWave: "2", namespace: apps}
           #- { name: igotify,              syncWave: "2", namespace: apps}
