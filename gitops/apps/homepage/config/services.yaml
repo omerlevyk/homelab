@@ -33,7 +33,11 @@
         icon: cloudflare.png
 
 - Applications:
+    - CV:
+        href: https://omerlevy03.com
+        description: Omer Levy CV
+        icon: mdi-file-account
     - Studio NSL:
-        href: http://studionsl.home.arpa
-        description: Studio NSL landing page (private preview)
+        href: https://studionsl.com
+        description: Studio NSL website
         icon: mdi-web

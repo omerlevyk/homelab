@@ -26,13 +26,3 @@ spec:
                 name: cv
                 port:
                   number: 8080
-    - host: cv.omerlevy03.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: cv
-                port:
-                  number: 8080
